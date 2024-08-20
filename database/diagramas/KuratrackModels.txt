@@ -1,0 +1,39 @@
+# php artisan make:model User -mcr
+# php artisan make:model Team -mcr
+php artisan make:model UserDetails -mcr
+php artisan make:model Company -mcr
+php artisan make:model Patient -mcr
+php artisan make:model Kurator -mcr
+php artisan make:model Site -mcr
+php artisan make:model Address -mcr
+php artisan make:model Sex -mcr
+php artisan make:model Allergy -mcr
+php artisan make:model HealthRecord -mcr
+php artisan make:model WoundPhase -mcr
+php artisan make:model WoundType -mcr
+php artisan make:model BodyLocation -mcr
+php artisan make:model Wound -mcr
+php artisan make:model Diagnostic -mcr
+php artisan make:model Tratment -mcr
+php artisan make:model Measurement -mcr
+php artisan make:model Appointment -mcr
+php artisan make:model TreatmentLog -mcr
+php artisan make:model Note -mcr
+php artisan make:model Media -mcr
+php artisan make:model WoundLog -mcr
+php artisan make:model AccessChangeLog -mcr
+
+php artisan make:migration create_kurator_pacient_table --create=kurator_pacient
+
+
+
+
+
+
+
+
+
+
+
+
+
