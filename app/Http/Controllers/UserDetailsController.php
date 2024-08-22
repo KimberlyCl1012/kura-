@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Sex;
+use App\Models\Site;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
@@ -15,7 +18,21 @@ class UserDetailsController extends Controller
     public function index()
     {
         $users = User::all();
-        return Inertia::render('Users/ListUsers', ['users' => $users]);
+        return Inertia::render('Users/Partials/CreateUserForm', ['users' => $users]);
+
+        //  //Companies
+        //  $companies = Company::all();
+        //  //Sites
+        //  $sites = Site::all();
+        //  //Sexes
+        //  $sexes = Sex::all();
+ 
+ 
+        //  return Inertia::render('Users/Partials/CreateUserForm', [
+        //      'companies' => $companies,
+        //      'sites' => $sites,
+        //      'sexes' => $sexes,
+        //  ]);
     }
 
     /**
@@ -23,7 +40,21 @@ class UserDetailsController extends Controller
      */
     public function create()
     {
-        //
+        //Companies
+        $companies = Company::all();
+        //Sites
+        $sites = Site::all();
+        //Sexes
+        $sexes = Sex::all();
+
+        dd($companies,$sites,$sexes);
+
+        return Inertia::render('Users/Create', [
+            'companies' => $companies,
+            'sites' => $sites,
+            'sexes' => $sexes,
+        ]);
+
     }
 
     /**

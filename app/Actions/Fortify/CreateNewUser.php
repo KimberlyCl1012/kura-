@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\UserDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,13 +30,22 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return DB::transaction(function () use ($input) {
-            return tap(User::create([
+            $user = User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
-            });
+            ]);
+    
+            // Crear UserDetail asociado
+            UserDetails::create([
+                'user_id' => $user->id,
+                'address' => $input['address'],
+                'phone_number' => $input['phone_number'],
+            ]);
+    
+            $this->createTeam($user);
+    
+            return $user;
         });
     }
 

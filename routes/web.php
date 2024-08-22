@@ -22,5 +22,6 @@ Route::middleware([
     Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
     //Users
     Route::resource('users', UserDetailsController::class);
+    
 
 });
