@@ -1,9 +1,9 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
-
+import Button from 'primevue/button';
 import {
-    onMounted
+    onMounted, ref
 } from 'vue';
 // import { Head, Link, useForm } from '@inertiajs/vue3';
 // import Checkbox from '@/Components/Checkbox.vue';
@@ -17,6 +17,7 @@ import {
 
 import DataTableUsers from './DataTableUsers.vue';
 
+const modulo = ref(false)
 
 import { usePage } from '@inertiajs/vue3';
 const { companies, sites, sexes, users } = usePage().props;
@@ -28,5 +29,6 @@ onMounted( function(){
 </script>
 
 <template>
-     <data-table-users :datos-usuarios="users"></data-table-users>
+    <Button type="button" icon="pi pi-refresh" text @click="modulo=!modulo"/>
+     <data-table-users  :datos-usuarios="users" v-if="modulo"></data-table-users>
 </template>
